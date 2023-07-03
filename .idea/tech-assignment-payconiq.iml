@@ -16,6 +16,7 @@
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-core:7.12.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin:7.12.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin-messages:7.12.1" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:gherkin:26.2.0" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:messages:22.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:tag-expressions:5.0.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-expressions:16.1.2" level="project" />
@@ -30,12 +31,6 @@
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-engine:1.9.3" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.9.3" level="project" />
-    <orderEntry type="library" name="Maven: io.qameta.allure:allure-cucumber5-jvm:2.16.1" level="project" />
-    <orderEntry type="library" name="Maven: io.qameta.allure:allure-java-commons:2.16.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
-    <orderEntry type="library" name="Maven: io.qameta.allure:allure-model:2.16.1" level="project" />
-    <orderEntry type="library" name="Maven: io.cucumber:gherkin:26.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: io.qameta.allure:allure-maven:2.16.1" level="project" />
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-suite:1.9.3" level="project" />
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-suite-api:1.9.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.platform:junit-platform-suite-engine:1.9.3" level="project" />
