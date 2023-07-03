@@ -10,9 +10,9 @@ public class TokenAndTime extends Token{
         return tokenTimeStart;
     }
 
-    public TokenAndTime(String token, LocalDateTime localDateTime ){
+    public TokenAndTime(String token, LocalDateTime tokenTimeStart ){
         this.token = token;
-        this.tokenTimeStart = localDateTime;
+        TokenAndTime.tokenTimeStart = tokenTimeStart;
     }
 
 

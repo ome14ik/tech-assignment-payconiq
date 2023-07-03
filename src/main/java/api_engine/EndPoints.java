@@ -1,8 +1,9 @@
 package api_engine;
 
+import api_engine.enums.PathParameter;
+import api_engine.helpers.JsonHelper;
 import api_engine.model.responses.BookingData;
 import api_engine.model.responses.BookingDates;
-import api_engine.model.responses.Bookings;
 import api_engine.model.responses.token.Token;
 import api_engine.model.responses.token.TokenAndTime;
 import configs.Configuration;
@@ -13,17 +14,19 @@ import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONObject;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EndPoints {
     private static String BASE_URL = Configuration.url;
-
+    private static TokenAndTime tokenAndTime;
     /**
      * Get token and time when token created. Return TokenAndTime object
      */
-    public static TokenAndTime getToken() throws Exception {
+    public static void getToken() throws Exception {
         JSONObject params =new JSONObject();
         params.put("username",Configuration.userName);
         params.put("password", Configuration.password);
@@ -42,9 +45,9 @@ public class EndPoints {
         if(token.reason != null){
             throw new Exception("Token not exist. Reason: "+token.reason);
         }
-        TokenAndTime tokenAndTime = new TokenAndTime(token.token, LocalDateTime.now());
+        tokenAndTime = new TokenAndTime(token.token, LocalDateTime.now());
 
-        return tokenAndTime;
+        //return tokenAndTime;
     }
 
     /**
@@ -78,99 +81,90 @@ public class EndPoints {
 
     /**
      * get booking information by booking id
-     * @param id
-     * @param firstName
-     * @param LastName
-     * @param checkIn
-     * @param checkOut
-     * @return
      */
-    public static Response getBooking(int id, String firstName, String LastName, LocalDateTime checkIn, LocalDateTime checkOut)
+    public static Response getBooking(String id, JSONObject params)
     {
+        String contentType = "application/json";
+        String accept = "application/json";
+
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given()
-            .accept(ContentType.JSON)
-            .contentType(ContentType.JSON);
+            .header("Accept", accept)
+            .header("Content-Type", contentType);
 
-        return request.queryParam("id",id).get(Route.booking());
+        if ((params == null || params.size() == 0) && id == null){
+            return request.get(Route.booking());
+        }else  if (!(id == null) && (params == null || params.size() == 0)){
+            return request.get(Route.booking()+id);
+        } else if (id == null && !(params == null || params.size() == 0)){
+            return request.params(params).get(Route.booking());
+        }
+            return request.params(params).get(Route.booking()+id);
+
+
+
+
+
     }
 
     /**
      * Create new booking
-     * @param firstName
-     * @param lastName
-     * @param totalPrice
-     * @param depositPaid
-     * @param checkIn
-     * @param checkOut
-     * @param additionalNeeds
      * @return
      */
-    public static Response createBooking(String firstName, String lastName, double totalPrice, boolean depositPaid, LocalDateTime checkIn, LocalDateTime checkOut, String additionalNeeds )
+    public static Response createBooking(BookingData bookingData)
     {
-        BookingDates bookingDates = new BookingDates(checkIn,checkOut);
-        BookingData bookingData = new BookingData(firstName,lastName,totalPrice,depositPaid,bookingDates,additionalNeeds);
+        String contentType = "application/json";
+        String accept = "application/json";
 
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given()
-            .accept(ContentType.JSON)
-            .contentType(ContentType.JSON);
+            .header("Accept", accept)
+            .header("Content-Type", contentType)
+            .auth().preemptive().basic("admin", "password123" );
 
-        return request.body(bookingData).post(Route.booking());
+        // Convert BookingData to JSON string
+        String bookingBody = getJsonParamsFromObject(bookingData).toJSONString();
+
+        return request.body(bookingBody).post(Route.booking());
     }
-
 
     /**
      * Update booking by booking id.
-     * @param firstName
-     * @param lastName
-     * @param totalPrice
-     * @param depositPaid
-     * @param checkIn
-     * @param checkOut
-     * @param additionalNeeds
-     * @param id
-     * @return
      */
-    public static Response updateBooking(String firstName, String lastName, double totalPrice, boolean depositPaid, LocalDateTime checkIn, LocalDateTime checkOut, String additionalNeeds, int id )
+    public static Response updateBooking(BookingData bookingData, String id)
     {
-        BookingDates bookingDates = new BookingDates(checkIn,checkOut);
-        BookingData bookingData = new BookingData(firstName,lastName,totalPrice,depositPaid,bookingDates,additionalNeeds);
-
+        String contentType = "application/json";
+        String accept = "application/json";
 
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given()
-            .accept(ContentType.JSON)
-            .contentType(ContentType.JSON);
+            .header("Accept", accept)
+            .header("Content-Type", contentType)
+            .auth().preemptive().basic("admin", "password123" );
 
-        return request.queryParam("id",id).body(bookingData).put(Route.booking());
+        String bookingBody = getJsonParamsFromObject(bookingData).toJSONString();
+
+        return request.body(bookingBody).put(Route.booking()+id);
     }
 
     /**
      * Partial update booking by id
-     * @param firstName
-     * @param lastName
-     * @param totalPrice
-     * @param depositPaid
-     * @param checkIn
-     * @param checkOut
-     * @param additionalNeeds
-     * @param id
-     * @return
      */
-    public static Response partialUpdateBooking(String firstName, String lastName, double totalPrice, boolean depositPaid, LocalDateTime checkIn, LocalDateTime checkOut, String additionalNeeds, int id )
+    public static Response partialUpdateBooking(BookingData bookingData, String id)
     {
-
-        BookingDates bookingDates = new BookingDates(checkIn,checkOut);
-        BookingData bookingData = new BookingData(firstName,lastName,totalPrice,depositPaid,bookingDates,additionalNeeds);
+        String contentType = "application/json";
+        String accept = "application/json";
 
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given()
-            .accept(ContentType.JSON)
-            .contentType(ContentType.JSON);
+            .header("Accept", accept)
+            .header("Content-Type", contentType)
+            .auth().preemptive().basic("admin", "password123" );
+            //.cookie("token="+tokenAndTime.token);
 
+        String bookingBody = getJsonParamsFromObject(bookingData).toJSONString();
 
-        return request.queryParam("id",id).body(bookingData).patch(Route.booking());
+        return request.body(bookingBody).patch(Route.booking()+id);
     }
 
     /**
@@ -178,12 +172,12 @@ public class EndPoints {
      * @param id
      * @return
      */
-    public static Response deleteBooking(int id){
+    public static Response deleteBooking(String id){
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given()
-            .accept(ContentType.JSON)
-            .contentType(ContentType.JSON);
-        return request.pathParams("id", id).delete(Route.booking());
+            .auth().preemptive().basic("admin", "password123" );
+            //.cookie("token="+tokenAndTime.token);
+        return request.delete(Route.booking()+id);
     }
 
     /**
@@ -209,16 +203,22 @@ public class EndPoints {
     }
 
 
-    public void response(){
 
-        //Response bookingResponse = getAllBookingIds();
-      // assertEquals(bookingResponse.statusCode(), 200);
-//        String jsonResponse = bookingResponse.getBody().asString();
-//        System.out.println(jsonResponse);
-////
-//       assertEquals(bookingResponse.statusCode(), 200);
-//       Bookings[] bookings = bookingResponse.getBody().as(Bookings[].class);
+    private static JSONObject getJsonParamsFromObject(BookingData bookingData){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("firstname", bookingData.firstName);
+        jsonObject.put("lastname", bookingData.lastName);
+        jsonObject.put("totalprice", bookingData.totalPrice);
+        jsonObject.put("depositpaid", bookingData.depositPaid);
 
+        JSONObject bookingDates = new JSONObject();
+        bookingDates.put("checkin", bookingData.bookingDates.checkin.toString());
+        bookingDates.put("checkout", bookingData.bookingDates.checkout.toString());
+
+        jsonObject.put("bookingdates", bookingDates);
+        jsonObject.put("additionalneeds", bookingData.additionalNeeds);
+
+        return jsonObject;
 
     }
 

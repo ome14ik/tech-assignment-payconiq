@@ -6,4 +6,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class BookingCreating extends Booking {
 
         public BookingData bookingData;
+
     }

@@ -21,8 +21,6 @@ public class TokenTestDef {
         jsonParams.put("username", userName);
         jsonParams.put("password", password);
         tokenResponce = EndPoints.getTokenResponse(jsonParams);
-
-
     }
     @Then ("^response status code should be (.*)")
     public void response_status_code_should_be(int statusCode){
