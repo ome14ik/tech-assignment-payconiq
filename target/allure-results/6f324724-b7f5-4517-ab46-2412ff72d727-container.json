@@ -1,0 +1,1 @@
+{"uuid":"6f324724-b7f5-4517-ab46-2412ff72d727","name":"Scenario Outline: ","children":["d976fa31-4dc8-4e26-8b32-2c7dc11bd510"],"befores":[{"name":"BDD.BaseApiSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1689705976191,"stop":1689705978202}],"afters":[],"start":1689705976191,"stop":1689705978764}

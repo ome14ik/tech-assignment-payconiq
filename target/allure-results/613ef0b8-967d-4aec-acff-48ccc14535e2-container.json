@@ -1,0 +1,1 @@
+{"uuid":"613ef0b8-967d-4aec-acff-48ccc14535e2","name":"Scenario Outline: Getting a specific booking","children":["4d8edb04-370b-4e44-ab3d-1909ebc7f48f"],"befores":[{"name":"BDD.BaseApiSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1689707502823,"stop":1689707503937}],"afters":[],"start":1689707502823,"stop":1689707505318}

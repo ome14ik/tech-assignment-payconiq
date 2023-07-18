@@ -1,0 +1,1 @@
+{"uuid":"6f055b37-4fca-4dff-8cd5-6b475e32482d","name":"Scenario Outline: Delete a booking","children":["3738c334-0bcf-4958-bf91-73401f972817"],"befores":[{"name":"BDD.BaseApiSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1689706960579,"stop":1689706961695}],"afters":[],"start":1689706960579,"stop":1689706964757}

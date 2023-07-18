@@ -1,0 +1,1 @@
+{"uuid":"8b949778-fac8-4285-a8e0-48b9e69a2d95","name":"Scenario Outline: Updating a booking","children":["f3180e9f-20af-48fb-b4a5-d9fceb4ad807"],"befores":[{"name":"BDD.BaseApiSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1689707054800,"stop":1689707056075}],"afters":[],"start":1689707054800,"stop":1689707057961}
