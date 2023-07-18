@@ -1,0 +1,1 @@
+{"uuid":"f06f7be2-c46d-419d-8640-d6218967b8ad","name":"Scenario Outline: Creating a booking","children":["fb6256c1-f5a8-44a2-9325-34b11988234a"],"befores":[{"name":"BDD.BaseApiSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1689705863356,"stop":1689705866355}],"afters":[],"start":1689705863353,"stop":1689705867002}

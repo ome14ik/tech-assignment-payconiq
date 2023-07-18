@@ -1,0 +1,1 @@
+{"uuid":"7b27bf6b-b6dc-4fc6-9369-2d12eef95f7c","name":"Scenario Outline: Getting all booking IDs","children":["a8006386-d929-4100-abd4-200b0ff3f603"],"befores":[{"name":"BDD.BaseApiSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1689705875277,"stop":1689705876390}],"afters":[],"start":1689705875277,"stop":1689705877027}

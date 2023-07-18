@@ -11,3 +11,4 @@ And the booking details should be returned - <returned details>
     |https://restful-booker.herokuapp.com| Steule    | Bartust  |  344       |    true     | 2017-01-01  | 2019-01-01 | towel, sleepers  |     200    |true             |
     |https://restful-booker.herokuapp.com| Steule    |  Bartust |  234.23     |    true     | 2017-01-01  | 2019-01-01 | towel, sleepers  |     200    |true            |
     |https://restful-booker.herokuapp.com| Steule    | Bartust  |  -462       |    true     | 2017-01-01  | 2019-01-01 | towel, sleepers  |     200    |true            |
+    |https://restful-booker.herokuapp.com| Steule    | Bartust  |  -462       |    true     | 2017-01-01  | 2019-01-01 | towel, sleepers  |     200    |true            |

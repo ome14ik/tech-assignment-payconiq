@@ -1,0 +1,42 @@
+{
+  "b74d6e3ac6afd67bfd840c25400ee06a" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 1,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a7f9d0c736d09fcf",
+      "status" : "skipped",
+      "statusDetails" : "Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.xpath: //div[@class = 'Box-footer text-center border-top-0']/a' (tried for 5 second(s) with 500 milliseconds interval)",
+      "time" : {
+        "start" : 1689672401790,
+        "stop" : 1689672414966,
+        "duration" : 13176
+      }
+    } ]
+  },
+  "f2c25fba093105eee6aa61259b0fbba8" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 1,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ef6544157be3b2d",
+      "status" : "skipped",
+      "statusDetails" : "Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.xpath: //div[@class = 'Box-footer text-center border-top-0']/a' (tried for 5 second(s) with 500 milliseconds interval)",
+      "time" : {
+        "start" : 1689672388108,
+        "stop" : 1689672401713,
+        "duration" : 13605
+      }
+    } ]
+  }
+}
